@@ -9,4 +9,4 @@ The build will be:
 - Some type of html-javascript to visualize the search and results
 
 
-The original data set is [here](http://www.sanjoseca.gov/index.aspx?nid=3079).  More info on this problem [here](https://github.com/codeforsanjose/Project-Ideas/issues/54).
+The source data is [here](http://data.sanjoseca.gov/dataviews/225973/san-jose-hauler-data/).  More info on this problem on the original [issue](https://github.com/codeforsanjose/Project-Ideas/issues/54).
