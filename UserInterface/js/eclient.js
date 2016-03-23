@@ -4,7 +4,7 @@ script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
-	host: 'http://localhost:9200',
+	host: 'http://104.197.66.88:9200',
 	log: 'trace'
 });
 module.exports = function findPress(query) {
