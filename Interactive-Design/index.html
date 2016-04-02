@@ -3,7 +3,6 @@
 		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
@@ -24,17 +23,37 @@
 
   </div><!-- /.container-fluid -->
 </nav>
-	<div class="container">
-		<div class="row">
-			<div id="search">
-				<form class="form" id="query">
-				  <div class="form-group">
-				    <input type="text" class="form-control" placeholder="Search by address" id="address">
-				  </div>
-				  <button type="submit" class="btn btn-default hidden" >Submit</button>
-				</form>	
+
+		<div class="container">
+			<div class="row">
+				<div id="search">
+					<form class="form" id="query">
+					  <div class="form-group">
+					    <input type="text" class="form-control" placeholder="Search by address" id="address">
+					  </div>
+					  <button type="submit" class="btn btn-default hidden" >Submit</button>
+					</form>	
+				</div>
 			</div>
+		</div>	
+		<div class="container">
+			<div class="row">
+				<div id="place_holder">
+					<div>
+						<ul id="list" class="list-group"></ul>
+					</div>
+				</div>
+			</div>	
 		</div>
-	</div>	
+		
 	</body>
+	<script id="address-template" type="text/x-handlebars-template">
+		  <li id={{address_id}} class="list-group-item">{{address}}</li>
+	</script>
+
+	<script id="detail-template" type="text/x-handlebars-template">
+		  <div>
+		  		{{pickupDay this}}
+		  </div>
+	</script>
 </html>
