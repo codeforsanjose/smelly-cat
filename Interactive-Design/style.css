@@ -7,3 +7,9 @@
 	height: 50px;
 	font-size: 18px;
 }
+
+
+li{
+	list-style: none;
+	margin-left: 0px;
+}
