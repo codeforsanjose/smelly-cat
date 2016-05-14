@@ -52,7 +52,8 @@
 var lastAddress = null;
 
 $("document").ready(function(){
-
+    $('#spinner').hide();
+    
     $("#query").on('keyup',function(e){
         //console.log('keyup', e.keyCode);
         e.preventDefault();
@@ -95,6 +96,8 @@ $("document").ready(function(){
 
                             var html=template(con);
                             $('#list').append(html);
+                            $('#list').children().first().addClass('current');
+
                         }
                     }
 
@@ -146,10 +149,12 @@ $("document").ready(function(){
         var url = "http://104.197.66.88:9200/addresses/address/"+address_id;
         console.log('searchDetail', url);
 
+        $('#spinner').show();
         $.ajax({
             "url":url,
             "type":"get",
             success:function(data){
+                $('#spinner').hide();
                 console.log(data._source);
                 var details = data._source;
                 var source  = $("#detail-template").html();
@@ -166,6 +171,7 @@ $("document").ready(function(){
                 $('#details').html(html);
             },
             error:function(err){
+                $('#spinner').hide();
                 console.log(err);
             }
         });
