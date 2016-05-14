@@ -74,7 +74,6 @@ $("document").ready(function(){
             // if (e.keyCode >= 48 && e.keyCode <= 57 || e.keyCode >= 65 && e.keyCode <= 90){ // key: 0-9 or a-z
             lastAddress = address;
 
-            console.log('will send ajax');
             $.ajax({
                 "url":"http://104.197.66.88:9200/addresses/_search?q=Address:"+address+"~",
                 "type":"post",
@@ -164,7 +163,7 @@ $("document").ready(function(){
                     "street":details.StreetNumber
                 };
                 var html=template(con);
-                $('#details').append(html);
+                $('#details').html(html);
             },
             error:function(err){
                 console.log(err);
