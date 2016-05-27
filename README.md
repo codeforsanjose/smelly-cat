@@ -8,7 +8,10 @@ The build will be:
 - Elastic Search to hold the data and create the search api
 - Some type of html-javascript to visualize the search and results
 
-
+How to get a docker instance with elasticsearch:
+- https://github.com/dockerfile/elasticsearch
+- Ask ameyades on slack for help
+- 
 The source data is [here](http://data.sanjoseca.gov/dataviews/225973/san-jose-hauler-data/).  More info on this problem on the original [issue](https://github.com/codeforsanjose/Project-Ideas/issues/54).
 
 [![Stories in Ready](https://badge.waffle.io/codeforsanjose/trash-pickup-portal.png?label=ready&title=Ready)](http://waffle.io/codeforsanjose/trash-pickup-portal)
