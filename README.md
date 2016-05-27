@@ -10,8 +10,8 @@ The build will be:
 
 How to get a docker instance with elasticsearch:
 - https://github.com/dockerfile/elasticsearch
-- Ask ameyades on slack for help
-- 
+- To run the ES: docker run -d -p 80:9200 elasticsearch`
+
 The source data is [here](http://data.sanjoseca.gov/dataviews/225973/san-jose-hauler-data/).  More info on this problem on the original [issue](https://github.com/codeforsanjose/Project-Ideas/issues/54).
 
 [![Stories in Ready](https://badge.waffle.io/codeforsanjose/trash-pickup-portal.png?label=ready&title=Ready)](http://waffle.io/codeforsanjose/trash-pickup-portal)
