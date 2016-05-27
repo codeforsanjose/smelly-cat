@@ -16,3 +16,7 @@ Step 1: Get a docker instance with elasticsearch:
 Step 2: Get an instance: `docker pull elasticsearch`
 
 Step 3: Run the ElasticSearch: `docker run -d -p 80:9200 elasticsearch`
+
+###AWS DNS:
+ec2-52-33-189-96.us-west-2.compute.amazonaws.com
+Ask ameyades on slack for help
