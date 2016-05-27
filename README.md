@@ -9,12 +9,6 @@ The current implementation on the San Jose website is a bit difficult to use. Th
 
 * Python, Elastic Search, HTML/CSS, Javascript, Bootstrap, Docker, Twilio API
 
-How to get a docker instance with elasticsearch:
-- https://github.com/dockerfile/elasticsearch
-- Get an instance: docker pull elasticsearch
-- To run the ES: docker run -d -p 80:9200 elasticsearch
-
-
 ### Getting Started
 Step 1: Get a docker instance with elasticsearch:
 `https://github.com/dockerfile/elasticsearch`
