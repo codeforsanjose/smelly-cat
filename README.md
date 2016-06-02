@@ -28,7 +28,7 @@ Step 6: Populate ElasticSearch with data.  Go to ~/Github/trash-pickup-portal/da
 
 Step 7: Go into the base folder (/trash-pickup-portal) and run 'python -m SimpleHTTPServer' for python 2 or for python3 'python3 -m http.server' 
 
-Step 8: Website should be at [http://localhost:8000/www/](localhost:8000/www/)
+Step 8: Website should be at [http://localhost:8000/www/](localhost)
 
 ###AWS DNS:
 
