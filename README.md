@@ -35,3 +35,6 @@ Step 8: Website should be at [http://localhost:8000/www/](http://localhost:8000/
 
 ec2-52-33-189-96.us-west-2.compute.amazonaws.com
 Ask ameyades on slack for help
+
+### City of San Jose backend:
+http://services2.arcgis.com/KCFBdu4OIPKQGsVV/ArcGIS/rest/services/esd_collection_services/FeatureServer
