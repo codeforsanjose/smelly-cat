@@ -1,59 +1,8 @@
-// $(function() {
-//     var availableTags = [
-//       "ActionScript",
-//       "AppleScript",
-//       "Asp",
-//       "BASIC",
-//       "C",
-//       "C++",
-//       "Clojure",
-//       "COBOL",
-//       "ColdFusion",
-//       "Erlang",
-//       "Fortran",
-//       "Groovy",
-//       "Haskell",
-//       "Java",
-//       "JavaScript",
-//       "Lisp",
-//       "Perl",
-//       "PHP",
-//       "Python",
-//       "Ruby",
-//       "Scala",
-//       "Scheme"
-//     ];
-
-//     var result = [];
-//     $("#address").keyup(function(event){
-//          if (event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode >= 65 && event.keyCode <= 90){
-//             var address = $("#address").val().toUpperCase();
-//             console.log('addres length',address.length);
-//              if(address.length!==0){
-//                 result = [];
-//                 $.ajax({
-//                    "url":"http://104.197.66.88:9200/addresses/_search?q=Address:"+address+"~",
-//                    "type":"post"
-//                 }).done(function(data){
-//                      for (var i=0;i<data.hits.hits.length;i++){
-//                        result.push(data.hits.hits[i]._source.Address);
-//                      }
-//                      console.log('length',result.length);
-//                      console.log(result);
-//                      $("#address").autocomplete({
-//                         source: result
-//                       });
-//                 });
-//               }
-//           }
-//     });
-//   });
-
 var lastAddress = null;
 
 $("document").ready(function(){
     $('#spinner').hide();
-    
+
     $("#query").on('keyup',function(e){
         //console.log('keyup', e.keyCode);
         e.preventDefault();
