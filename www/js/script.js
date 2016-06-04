@@ -76,7 +76,7 @@ $("document").ready(function(){
             lastAddress = address;
 
             $.ajax({
-                "url":"http://104.197.66.88:9200/addresses/_search?q=Address:"+address+"~",
+                "url":"http://192.168.99.100:9200/addresses/_search?q=Address:"+address+"~",
                 "type":"post",
                 success:function(data){
                     if (address == $('#address').val()) {
@@ -146,7 +146,7 @@ $("document").ready(function(){
 
     // Search detail by address id and display information
     function searchDetail(address_id) {
-        var url = "http://104.197.66.88:9200/addresses/address/"+address_id;
+        var url = "http://192.168.99.100:9200/addresses/address/"+address_id;
         console.log('searchDetail', url);
 
         $('#spinner').show();
