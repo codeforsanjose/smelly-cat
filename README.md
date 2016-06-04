@@ -38,3 +38,6 @@ Ask ameyades on slack for help
 
 ### City of San Jose backend:
 http://services2.arcgis.com/KCFBdu4OIPKQGsVV/ArcGIS/rest/services/esd_collection_services/FeatureServer
+
+## Eventual end goal:
+http://simplicity.ashevillenc.gov/#/topics/trash?searchtext=92%20PATTON%20AVE%20A,%2028801&searchby=address&id=228201&view=simple&validViews=simple
