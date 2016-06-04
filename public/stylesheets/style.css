@@ -1,0 +1,43 @@
+/*body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}*/
+
+.navbar{
+    background-color:#9b132b
+}
+
+.navbar-brand{
+  color:#FFF;
+  margin-left: 40px;
+}
+
+.navbar-brand:hover{
+  color: inherit;
+}
+
+form{
+  width: 400px;
+}
+
+#enter_number span{
+  float: left;
+}
+#enter_number input{
+  float: right;
+}
+
+button{
+  background-color:#9b132b !important;
+  border: 1px solid #6c0923 !important;
+}
+
+#plus-one button:focus {outline:0;}
+
+button[type=submit]{
+  
+}
