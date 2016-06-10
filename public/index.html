@@ -67,7 +67,7 @@
 	<div class="thumbnail text-center detail">
 		<div>
 			<span style="float:right">
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Get Notified</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-book-id="address">Get Notified</button>
 			</span>
 		</div>
 		<h3 class="detail-address text-primary">
@@ -80,6 +80,11 @@
 			Contact: {{hauler}}
 		</div>
 	</div>
+
+    $('#myModal').on('show.bs.modal',function(e) {
+        var addressId = $(e.relatedTarget).data('addressId');
+        $(e.currentTarget).find('input[name="address'].val(addressId));
+    });
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -111,5 +116,6 @@
     </div>
   </div>
 </div>
+
 </script>
 </html>
