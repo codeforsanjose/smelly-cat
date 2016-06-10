@@ -81,10 +81,12 @@
 		</div>
 	</div>
 
+<script>
     $('#myModal').on('show.bs.modal',function(e) {
         var addressId = $(e.relatedTarget).data('addressId');
         $(e.currentTarget).find('input[name="address'].val(addressId));
     });
+</script>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
