@@ -30,6 +30,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/',function(req,res){
+    console.log("hello");
+});
+
+
 app.post('/sendSMS',function(req,res){
     var details=req.body;
     console.log(details.number);
@@ -68,7 +73,7 @@ app.post('/verifyAccount',function(req,res){
     //     }
     //     console.log(data.verificationCode);
     //     res.send(data.verificationCode);
-        
+
     // });
 
 });

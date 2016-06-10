@@ -2,3 +2,4 @@
 .ipynb_checkpoints/Hauler to Data Frame-checkpoint.ipynb
 node_modules
 .env
+.DS_Store

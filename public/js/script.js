@@ -3,6 +3,12 @@ var lastAddress = null;
 $("document").ready(function(){
     $('#spinner').hide();
 
+    $("#send_verification_code").on('submit',function(e){
+      e.preventDefault();
+      alert("hi");
+    });
+
+
     $("#query").on('keyup',function(e){
         //console.log('keyup', e.keyCode);
         e.preventDefault();
@@ -46,6 +52,10 @@ $("document").ready(function(){
                             var html=template(con);
                             $('#list').append(html);
                             $('#list').children().first().addClass('current');
+
+                            $("#get_notified").on('click',function(e){
+                                alert("hello");
+                            });
 
                         }
                     }
