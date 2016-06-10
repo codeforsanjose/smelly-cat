@@ -17,7 +17,7 @@ Step 1: Clone this repo.
 Step 2: Install Docker.  Get an instance: `docker pull elasticsearch`
 This is from [here](https://github.com/dockerfile/elasticsearch)
 
-Step 3: In root of cloned repo, run 'docker build -t pickup_portal -f Dockerfile .'  
+Step 3: In root of cloned repo, run `docker build -t pickup_portal -f Dockerfile . `
 
 Step 4: Run 'docker images' to get a list of images 
 
