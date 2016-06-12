@@ -7,21 +7,25 @@ export default React.createClass({
   getInitialState(){
     return {
       value:'',
-      hits:''
+      hits:[]
     }
   },
   handleChange(event){
-    this.setState({value: event.target.value});
-    console.log(event.target.value);
+    this.setState({value: event.target.value.toUpperCase()});
     this.query(this.state.value);
   },
   handleData(data){
-    console.log(data);
-    this.setState({hits:data});
+    const list = [];
+
+    const hits = data.map((arr)=>{
+      list.push(arr._source);
+    });
+
+    this.setState({hits:list});
   },
   query(address,handleData){
     const url = 'http://192.168.99.100:9200/addresses/_search?q=Address:'+address+'~';
-    console.log(url);
+
     var self = this;
     if(address!==''){
       jquery.ajax({
@@ -50,9 +54,9 @@ export default React.createClass({
                        id="address"
                        name="address"
                        value={this.state.value}
-                       onChange={this.handleChange}/>
+                       onChange={this.handleChange} />
               </div>
-              
+              <Addresslist list={this.state.hits} />
               <button type="submit" className="btn btn-default hidden">Submit</button>
             </form>
           </div>

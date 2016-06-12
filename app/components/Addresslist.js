@@ -1,23 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
+import Listitem from './Listitem'
 
 export default React.createClass({
-
   render() {
-    return (
-      <div className="container">
-  			<div className="row">
-  				<div id="place_holder">
-  					<div>
-  						<ul id="list" className="list-group">
-                {this.props.hits}
-              </ul>
-  					</div>
-  				</div>
-  			</div>
+    const list = this.props.list;
 
-  			<div id="details"></div>
-  		</div>
+    const addresses = list.map((item, i)=>{
+        if(i==0){
+          return <Listitem key={i} type="list-group-item active" text={item.Address}/>
+        }else{
+          return <Listitem key={i} type="list-group-item" text={item.Address}/>
+        }
+    });
+
+    return (
+				<ul id="list" className="list-group">
+          {addresses}
+        </ul>
     )
   }
 })

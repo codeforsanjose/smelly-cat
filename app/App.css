@@ -2,17 +2,16 @@ body{
   margin: 0px;
   padding: 0px;
 }
-.app {
-  background-color: green;
-  height: 50px;
-  border: 1px solid blue;
+
+nav{
+  background-color: #337ab7 !important;
+  border-color: #337ab7 !important;
 }
 
-.bap {
-  background-color: red;
-  height: 25px;
+.nav .navbar-inverse .navbar-brand {
+    color: #d6d6d6 !important;
+    text-decoration: none;
 }
-
 
 .glyphicon.spinning {
 	animation: spin 2s infinite linear;
