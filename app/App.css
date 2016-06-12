@@ -1,0 +1,61 @@
+body{
+  margin: 0px;
+  padding: 0px;
+}
+.app {
+  background-color: green;
+  height: 50px;
+  border: 1px solid blue;
+}
+
+.bap {
+  background-color: red;
+  height: 25px;
+}
+
+
+.glyphicon.spinning {
+	animation: spin 2s infinite linear;
+	-webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+	from { transform: scale(1) rotate(0deg); }
+	to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(360deg); }
+}
+
+#search {
+	margin-top: 30px;
+}
+
+#search #address{
+	height: 50px;
+	font-size: 18px;
+}
+
+li{
+	list-style: none;
+	cursor: pointer;
+}
+
+.current{
+	background-color:#7F6762;
+}
+
+.detail-address {
+	margin-bottom: 30px;
+}
+
+.detail-contact {
+	margin-top: 30px;
+}
+
+#get_notified{
+	background-color: #202020;
+	border: none;
+}
