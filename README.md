@@ -36,7 +36,7 @@ Step 9: Website should be at [http://localhost:8000/www/](http://localhost:8000/
 
 ### Run Bash on your docker instance:
 
- docker exec -i -t <instance name>  /bin/bash
+ docker exec -i -t \<instance name\>  /bin/bash
 
 ###AWS DNS:
 
