@@ -34,7 +34,9 @@ Step 8: Go into the base folder (/trash-pickup-portal) and run `python -m Simple
 Step 9: Website should be at [http://localhost:8000/www/](http://localhost:8000/www/)
 
 
+### Run Bash on your docker instance:
 
+ docker exec -i -t \<instance name\>  /bin/bash
 
 ###AWS DNS:
 
