@@ -2,12 +2,16 @@ import React from 'react'
 import { render } from 'react-dom'
 import jquery from 'jquery'
 import Addresslist from './Addresslist'
+import Result from './Result'
 
 export default React.createClass({
   getInitialState(){
     return {
       value:'',
-      hits:[]
+      hits:[],
+      hauler:[],
+      selected:'',
+      result: false
     }
   },
   handleChange(event){
@@ -24,26 +28,30 @@ export default React.createClass({
     this.setState({hits:list,selected:0});
   },
   navigate(event){
+    this.setState({result:false});
+    //navigate down the list
     if(event.keyCode==40){
       let selected = this.state.selected;
       let hits = this.state.hits;
-      console.log(selected);
 
       if(selected < hits.length-1){
         let latest_selected = this.state.selected+1;
-        console.log(latest_selected);
         this.setState({selected:latest_selected});
+        this.setState({hauler:hits[latest_selected]});
+        this.setState({value:hits[latest_selected].Address});
       }
     }
 
+    //navigate up the list
     if(event.keyCode==38){
       let selected = this.state.selected;
       let hits = this.state.hits;
 
       if(selected > 0){
         const latest_selected = this.state.selected-1;
-        console.log(latest_selected);
         this.setState({selected:latest_selected});
+        this.setState({hauler:hits[latest_selected]});
+        this.setState({value:hits[latest_selected].Address});
       }
     }
   },
@@ -53,7 +61,7 @@ export default React.createClass({
   query(address,handleData){
     const url = 'http://192.168.99.100:9200/addresses/_search?q=Address:'+address+'~';
 
-    var self = this;
+    const self = this;
     if(address!==''){
       jquery.ajax({
         'url':url,
@@ -67,12 +75,31 @@ export default React.createClass({
       })
     }
   },
+  updateVal(obj){
+    this.setState({value:obj.name,selected:obj.index});
+    this.getHaulerData();
+  },
+  getHaulerData(){
+    let hits = this.state.hits;
+    let index = this.state.selected;
+
+    this.setState({hauler:hits[index]}, function () {
+        this.setState({result:true});
+    });
+  },
+  handleSubmit(event){
+    event.preventDefault();
+    this.getHaulerData();
+  },
   render() {
+    const hauler_data = this.state.hauler;
+    const result = <Result address={hauler_data.Address} pickup={hauler_data.PickupDay} />;
+
     return (
       <div className="container">
         <div className="row">
           <div id="search">
-            <form className="form" id="query">
+            <form className="form" id="query" onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input type="text"
                        autoComplete="off"
@@ -83,7 +110,12 @@ export default React.createClass({
                        value={this.state.value}
                        onChange={this.handleChange} />
               </div>
-              <Addresslist list={this.state.hits} selected={this.state.selected} />
+
+              {this.state.result ? result : <Addresslist list={this.state.hits}
+                                                         selected={this.state.selected}
+                                                         update={this.updateVal} />
+              }
+
               <button type="submit" className="btn btn-default hidden">Submit</button>
             </form>
           </div>
