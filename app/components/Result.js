@@ -8,7 +8,7 @@ export default React.createClass({
       <div className="thumbnail text-center detail">
         <div>
           <span>
-            <button type="button" className="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Get Notified</button>
+            <button type="button" id="get_notified" className="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Get Notified</button>
           </span>
         </div>
         <h3 className="detail-address text-primary">
