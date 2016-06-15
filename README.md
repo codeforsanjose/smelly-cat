@@ -19,7 +19,7 @@ This is from [here](https://github.com/dockerfile/elasticsearch)
 
 Step 3: In root of cloned repo, run `docker build -t pickup_portal -f Dockerfile . `
 
-Step 4:  `docker run -d -p 9200:9200 pickup_portal`
+Step 4:  `docker run -d -p 9200:9200 -p 3000:3000 pickup_portal`
 
 Step 5: Check if elasticsearch is working at [indices](http://192.168.99.100:9200/_cat/indices?v)
 This accesses the default docker ip.  Check your ip with `docker-machine env`

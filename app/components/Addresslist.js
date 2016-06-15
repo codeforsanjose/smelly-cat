@@ -3,6 +3,9 @@ import { render } from 'react-dom'
 import Listitem from './Listitem'
 
 export default React.createClass({
+  update(obj){
+    this.props.update(obj);
+  },
   render() {
     const list = this.props.list;
 
@@ -10,9 +13,9 @@ export default React.createClass({
 
     const addresses = list.map((item, i)=>{
         if(i==selected){
-          return <Listitem key={i} type="list-group-item active" text={item.Address}/>
+          return <Listitem key={i} index={i} type="list-group-item active" text={item.Address} update={this.update}/>
         }else{
-          return <Listitem key={i} type="list-group-item" text={item.Address}/>
+          return <Listitem key={i} index={i} type="list-group-item" text={item.Address} update={this.update}/>
         }
     });
 

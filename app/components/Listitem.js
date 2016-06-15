@@ -2,19 +2,19 @@ import React from 'react'
 import { render } from 'react-dom'
 
 export default React.createClass({
+  handleClick(event){
+    const obj={
+      "name": event.target.innerHTML,
+      "index": this.props.index
+    };
+
+    console.log(obj);
+
+    this.props.update(obj);
+  },
   render() {
-    // const list = this.props.list;
-    //
-    // const addresses = list.map((item, i)=>{
-    //     // const address = <li key={i} className="list-group-item">{item.Address}</li>;
-    //
-    //     return ({i==0 ? <li key={i} className="list-group-item active">{item.Address}</li>:<li key={i} className="list-group-item">{item.Address}</li>})
-    //
-    //     // return {{i}==0 ? <li key={i} className="list-group-item active">{item.Address}</li> :
-    //     //     <li key={i} className="list-group-item">{item.Address}</li>};
-    // });
     return (
-				<li key={this.props.key} className={this.props.type}>{this.props.text}</li>
+				<li onClick={this.handleClick} key={this.props.key} className={this.props.type}>{this.props.text}</li>
     )
   }
 })
