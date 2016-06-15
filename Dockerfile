@@ -4,6 +4,8 @@ MAINTAINER ameyades
 
 RUN apt-get update
 
+RUN apt-get install -y nginx
+
 RUN apt-get install -y nodejs npm
 
 RUN ln -s "$(which nodejs)" /usr/bin/node
@@ -16,11 +18,6 @@ RUN npm install -g n
 
 RUN n stable
 
-#RUN npm install npm -g
-#purposeful redundancy
-
-#RUN npm install npm -g
-
 # Create app directory
 RUN mkdir -p /usr/src/app
 
@@ -32,5 +29,13 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN npm install
+
+EXPOSE 1337
+
+EXPOSE 3000
+
+#RUN npm start
+
+
 
 
