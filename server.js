@@ -32,6 +32,35 @@ if (isDeveloping) {
     res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
     res.end();
   });
+
+  app.post('/sendSMS',function(req,res){
+    var details=req.body;
+    console.log(details.number);
+    client.messages.create({
+        to: details.number,
+        from: twilio_number,
+        body: details.message
+    }, function(err, message) {
+        console.log(message.sid);
+        res.send("success");
+    });
+  });
+
+  app.post('/verifyAccount',function(req,res){
+    var details=req.body;
+    console.log(details);
+
+    client.outgoingCallerIds.post({ phoneNumber: details.number }, function(err, data) {
+        if(err){
+            console.log(err);
+            return;
+        }
+        console.log(data.verificationCode);
+        res.send(data.verificationCode);
+    });
+    
+  });
+
 } else {
   app.use(express.static(__dirname + '/dist'));
   app.get('*', function response(req, res) {

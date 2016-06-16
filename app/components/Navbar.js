@@ -13,11 +13,13 @@ export default React.createClass({
   },
   render() {
     let navClass;
+
     if(this.props.color == 'dark'){
       navClass = 'navbar navbar-inverse';
     }else{
       navClass = 'navbar navbar-default';
     }
+
     return (
       <nav className={navClass}>
         <div className="container-fluid">
