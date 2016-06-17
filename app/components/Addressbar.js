@@ -86,7 +86,6 @@ export default React.createClass({
     let index = this.state.selected;
     this.setState({hauler:hits[index]}, function () {
         this.setState({result:true});
-        debugger;
         this.setState({value:hits[index].Address});
     });
   },
