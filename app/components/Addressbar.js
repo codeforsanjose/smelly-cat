@@ -81,7 +81,6 @@ export default React.createClass({
     this.getHaulerData();
   },
   getHaulerData(){
-    debugger;
     let hits = this.state.hits;
     let index = this.state.selected;
     this.setState({hauler:hits[index]}, function () {
