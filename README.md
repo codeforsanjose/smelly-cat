@@ -43,6 +43,24 @@ Step 9: Website should be at [http://localhost:8000/www/](http://localhost:8000/
 ec2-52-33-189-96.us-west-2.compute.amazonaws.com
 Ask ameyades on slack for help
 
+###UI Reference:
+
+UI Library: React.js
+Server: express.js (node.js)
+
+Run ```npm install``` to install dependencies
+
+Run ```npm start``` to start the Server
+
+Application runs on port 3000.
+
+Main server file : server.js
+
+Main UI file: main.js
+
+All the components will be under /app/components
+Any new component should go under components
+
 
 
 ### City of San Jose backend:

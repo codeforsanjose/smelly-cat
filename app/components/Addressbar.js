@@ -1,8 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 import jquery from 'jquery'
+window.$ = window.jQuery = require('jquery');
+const Bootstrap = require('bootstrap');
+Bootstrap.$ = $;
 import Addresslist from './Addresslist'
 import Result from './Result'
+import Modal from './Alerts'
 
 export default React.createClass({
   getInitialState(){
@@ -119,6 +123,8 @@ export default React.createClass({
 
               <button type="submit" className="btn btn-default hidden">Submit</button>
             </form>
+
+            <Modal details={this.state.value}/>
           </div>
         </div>
       </div>
