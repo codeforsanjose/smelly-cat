@@ -124,7 +124,7 @@ export default React.createClass({
               <button type="submit" className="btn btn-default hidden">Submit</button>
             </form>
 
-            <Modal details={this.state.value}/>
+            <Modal reminder={this.state.hauler}/>
           </div>
         </div>
       </div>
