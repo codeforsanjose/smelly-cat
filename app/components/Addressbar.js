@@ -6,7 +6,7 @@ const Bootstrap = require('bootstrap');
 Bootstrap.$ = $;
 import Addresslist from './Addresslist'
 import Result from './Result'
-import Modal from './Alerts'
+import Modal from './Modal'
 
 export default React.createClass({
   getInitialState(){

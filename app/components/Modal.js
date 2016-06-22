@@ -5,7 +5,7 @@ import Listitem from './Listitem'
 export default React.createClass({
   render() {
     const {Address,PickupDay} = this.props.reminder;
-    console.log(Address);
+
     return (
       <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div className="modal-dialog" role="document">
@@ -20,14 +20,24 @@ export default React.createClass({
                 <label><strong>Address:</strong></label>
                 <span id="address"> {Address}</span>
               </div>
+
               <div className="form-group">
                 <label><strong>Pickup Day:</strong></label>
                 <span id="pickup_day"> {PickupDay}</span>
               </div>
+
+              <div className="form-group">
+                <label><strong>Phone Number:</strong></label>
+              </div>
+
+              <div className="form-group">
+                <label><strong> Time (preferred time to receive an sms reminder):</strong></label>
+              </div>
+
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" className="btn btn-primary">Set Reminder</button>
+                <button type="submit" className="btn btn-primary">Set</button>
               </div>
             </div>
           </form>
