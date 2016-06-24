@@ -19,9 +19,9 @@ export default React.createClass({
     }
   },
   handleChange(event){
-    console.log(event.target.value.toUpperCase());
-    this.setState({value: event.target.value.toUpperCase()});
-    this.query(this.state.value);
+    this.setState({value: event.target.value.toUpperCase()},function(){
+      this.query(this.state.value);
+    });
   },
   handleData(data){
     const list = [];
