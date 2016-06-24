@@ -27,11 +27,12 @@ This accesses the default docker ip.  Check your ip with `docker-machine env`
 Step 6: Install csv2es with python 2.7 `pip install csv2es`
 
 Step 7: Populate ElasticSearch with data.  Go to ~/Github/trash-pickup-portal/data and run:
-`csv2es --delete-index --index-name addresses --host http://192.168.99.100:9200/ --doc-type address --import-file unix.txt --tab`
+`csv2es --delete-index --index-name addresses --host http://192.168.99.100:9200/ --doc-type address --import-file unix.txt --tab` 
+*Do this everytime you start the instance. 
 
-Step 8: Go into the base folder (/trash-pickup-portal) and run `python -m SimpleHTTPServer` for python 2 or for python3 `python3 -m http.server'`
+Step 8: Run ```npm install``` to install dependencies
 
-Step 9: Website should be at [http://localhost:8000/www/](http://localhost:8000/www/)
+Step 9: Run ```npm start``` to start the Server
 
 
 ### Run Bash on your docker instance:
