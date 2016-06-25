@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/codeforsanjose/trash-pickup-portal.png?label=ready&title=Ready)](https://waffle.io/codeforsanjose/trash-pickup-portal)
+  [![Stories in Ready](https://badge.waffle.io/codeforsanjose/trash-pickup-portal.png?label=ready&title=Ready)](https://waffle.io/codeforsanjose/trash-pickup-portal)
 # Trash Pickup Portal
 
 Trash Pickup Portal provides a user-friendly way to search for information about trash pickup times for San Jose.
@@ -8,7 +8,7 @@ The current implementation on the San Jose website is a bit difficult to use. Th
 
 ### Technologies
 
-* Python, Elastic Search, HTML/CSS, Javascript, Bootstrap, Docker, Twilio API
+* Python, Elastic Search, HTML/CSS, Javascript, Bootstrap, Docker, Twilio API, Firebase
 
 ### Getting Started
 
@@ -27,8 +27,8 @@ This accesses the default docker ip.  Check your ip with `docker-machine env`
 Step 6: Install csv2es with python 2.7 `pip install csv2es`
 
 Step 7: Populate ElasticSearch with data.  Go to ~/Github/trash-pickup-portal/data and run:
-`csv2es --delete-index --index-name addresses --host http://192.168.99.100:9200/ --doc-type address --import-file unix.txt --tab` 
-*Do this everytime you start the instance. 
+`csv2es --delete-index --index-name addresses --host http://192.168.99.100:9200/ --doc-type address --import-file unix.txt --tab`
+*Do this everytime you start the instance.
 
 Step 8: Run ```npm install``` to install dependencies
 
