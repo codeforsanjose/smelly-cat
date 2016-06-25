@@ -19,6 +19,8 @@ export default React.createClass({
     }
   },
   handleChange(event){
+    this.setState({result:false});
+
     this.setState({value: event.target.value.toUpperCase()},function(){
       this.query(this.state.value);
     });
@@ -33,7 +35,6 @@ export default React.createClass({
     this.setState({hits:list,selected:0});
   },
   navigate(event){
-    this.setState({result:false});
     //navigate down the list
     if(event.keyCode==40){
       let selected = this.state.selected;
@@ -100,6 +101,11 @@ export default React.createClass({
     const hauler_data = this.state.hauler;
     const result = <Result address={hauler_data.Address} pickup={hauler_data.PickupDay} />;
 
+    console.log(this.state.result);
+    if(this.state.value==""){
+      this.state.hits=[];
+    }
+
     return (
       <div className="container">
         <div className="row">
@@ -116,13 +122,12 @@ export default React.createClass({
                        onChange={this.handleChange} />
               </div>
 
-              {this.state.result ? result : <Addresslist list={this.state.hits}
-                                                         selected={this.state.selected}
-                                                         update={this.updateVal} />
-              }
-
               <button type="submit" className="btn btn-default hidden">Submit</button>
             </form>
+            {this.state.result ? result : <Addresslist list={this.state.hits}
+                                                       selected={this.state.selected}
+                                                       update={this.updateVal} />
+            }
 
             <Modal reminder={this.state.hauler}/>
           </div>
