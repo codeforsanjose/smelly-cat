@@ -6,6 +6,14 @@ const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
+// const Firebase = require("firebase");
+// const myFirebaseRef = new Firebase("https://trashpickup-97bc6.firebaseio.com/enrolled");
+// myFirebaseRef.push();
+const firebase = require('firebase');
+const myFirebaseRef = firebase.initializeApp({
+  serviceAccount: "./data/trashpickup-service.json",
+  databaseURL: "https://trashpickup-97bc6.firebaseio.com"
+});
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
@@ -48,7 +56,6 @@ if (isDeveloping) {
 
   app.post('/verifyAccount',function(req,res){
     var details=req.body;
-    console.log(details);
 
     client.outgoingCallerIds.post({ phoneNumber: details.number }, function(err, data) {
         if(err){
@@ -58,7 +65,7 @@ if (isDeveloping) {
         console.log(data.verificationCode);
         res.send(data.verificationCode);
     });
-    
+
   });
 
 } else {
