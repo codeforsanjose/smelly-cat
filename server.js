@@ -15,6 +15,12 @@ const myFirebaseRef = firebase.initializeApp({
   databaseURL: "https://trashpickup-97bc6.firebaseio.com"
 });
 
+const db = firebase.database();
+console.log(db);
+
+
+
+
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
