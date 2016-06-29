@@ -9,7 +9,7 @@ nav{
 }
 
 .navbar-brand {
-    color: #FFFFFF !important;    
+    color: #FFFFFF !important;
 }
 
 .glyphicon.spinning {
@@ -57,4 +57,8 @@ li{
   background-color:#337ab7 !important;
   border: none;
   color:#FFFFFF;
+}
+
+.btn.btn-notification:focus {
+  outline: none;
 }
