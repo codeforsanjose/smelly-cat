@@ -28,10 +28,12 @@ export default React.createClass({
 
               <div className="form-group">
                 <label><strong>Phone Number:</strong></label>
+                <input class="form-control" type="text"/>
               </div>
 
               <div className="form-group">
                 <label><strong> Time (preferred time to receive an sms reminder):</strong></label>
+                <input class="form-control" type="text"/>
               </div>
 
               </div>
