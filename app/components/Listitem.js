@@ -8,8 +8,6 @@ export default React.createClass({
       "index": this.props.index
     };
 
-    console.log(obj);
-
     this.props.update(obj);
   },
   render() {

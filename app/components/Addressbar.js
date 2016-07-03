@@ -101,7 +101,6 @@ export default React.createClass({
     const hauler_data = this.state.hauler;
     const result = <Result address={hauler_data.Address} pickup={hauler_data.PickupDay} />;
 
-    console.log(this.state.result);
     if(this.state.value==""){
       this.state.hits=[];
     }
