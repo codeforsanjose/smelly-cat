@@ -62,12 +62,27 @@ export default React.createClass({
     }
   },
   componentDidMount(){
+    console.log(this);
+    jquery.ajax({
+      'url':window.location.href+'getEnv',
+      'type':"get"
+    }).done(function(res){
+      console.log(res);
+      if(res=='development'){
+        this.setState({base_url:'http://192.168.99.100'});
+      }else{
+        this.setState({base_url:window.location.href});
+      }
+    }.bind(this));
+
     document.addEventListener("keydown", this.navigate, false);
   },
   query(address,handleData){
-    const url = 'http://192.168.99.100:9200/addresses/_search?q=Address:'+address+'~';
-
     const self = this;
+    const base_url = self.state.base_url;
+    console.log(base_url);
+    const url = base_url+':9200/addresses/_search?q=Address:'+address+'~';
+
     if(address!==''){
       jquery.ajax({
         'url':url,
