@@ -71,7 +71,7 @@ export default React.createClass({
       if(res=='development'){
         this.setState({base_url:'http://192.168.99.100'});
       }else{
-        this.setState({base_url:window.location.href});
+        this.setState({base_url:window.location.protocol+'//'+window.location.hostname});
       }
     }.bind(this));
 
