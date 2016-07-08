@@ -6,6 +6,8 @@ const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
+const dotenv = require('dotenv');
+dotenv.load();
 const sid = process.env.SID;
 // const Firebase = require("firebase");
 // const myFirebaseRef = new Firebase("https://trashpickup-97bc6.firebaseio.com/enrolled");
@@ -22,6 +24,8 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 console.log(isDeveloping);
 const port = isDeveloping ? 9000 : process.env.PORT;
 const app = express();
+
+console.log(isDeveloping);
 
 app.get('/getEnv',function(req,res){
   console.log(isDeveloping);
