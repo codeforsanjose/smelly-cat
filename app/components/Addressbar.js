@@ -62,16 +62,14 @@ export default React.createClass({
     }
   },
   componentDidMount(){
-    console.log(this);
     jquery.ajax({
       'url':window.location.href+'getEnv',
       'type':"get"
     }).done(function(res){
-      console.log(res);
       if(res=='development'){
         this.setState({base_url:'http://192.168.99.100'});
       }else{
-        this.setState({base_url:window.location.protocol+'//'+window.location.hostname});
+        this.setState({base_url:'http://localhost'});
       }
     }.bind(this));
 
@@ -80,7 +78,6 @@ export default React.createClass({
   query(address,handleData){
     const self = this;
     const base_url = self.state.base_url;
-    console.log(base_url);
     const url = base_url+':9200/addresses/_search?q=Address:'+address+'~';
 
     if(address!==''){
