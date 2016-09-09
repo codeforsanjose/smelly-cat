@@ -21,8 +21,7 @@ Step 3: In root of cloned repo, run `docker build -t pickup_portal -f . `
 
 Step 4:  `docker run -d -p 9200:9200 -p 3000:3000 pickup_portal`
 
-Step 5: Check if elasticsearch is working at [indices](http://0.0.0.0:9200/_cat/indices?v)
-This accesses the default docker ip.  Check your ip with `docker-machine env`
+Step 5: Check if elasticsearch is working at [indices](http://0.0.0.0:9200/_cat/indices?v
 
 Step 6: Install csv2es with python 2.7 `pip install csv2es`
 
