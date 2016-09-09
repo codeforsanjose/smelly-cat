@@ -17,17 +17,16 @@ Step 1: Clone this repo.
 Step 2: Install Docker.  Get an instance: `docker pull elasticsearch`
 This is from [here](https://github.com/dockerfile/elasticsearch)
 
-Step 3: In root of cloned repo, run `docker build -t pickup_portal -f Dockerfile . `
+Step 3: In root of cloned repo, run `docker build -t pickup_portal -f . `
 
 Step 4:  `docker run -d -p 9200:9200 -p 3000:3000 pickup_portal`
 
-Step 5: Check if elasticsearch is working at [indices](http://192.168.99.100:9200/_cat/indices?v)
-This accesses the default docker ip.  Check your ip with `docker-machine env`
+Step 5: Check if elasticsearch is working at [indices](http://0.0.0.0:9200/_cat/indices?v)
 
 Step 6: Install csv2es with python 2.7 `pip install csv2es`
 
 Step 7: Populate ElasticSearch with data.  Go to ~/Github/trash-pickup-portal/data and run:
-`csv2es --delete-index --index-name addresses --host http://192.168.99.100:9200/ --doc-type address --import-file unix.txt --tab`
+`csv2es --delete-index --index-name addresses --host http://0.0.0.0:9200/ --doc-type address --import-file unix.txt --tab`
 *Do this everytime you start the instance.
 
 Step 8: Run ```npm install``` to install dependencies
