@@ -67,7 +67,8 @@ export default React.createClass({
       'type':"get"
     }).done(function(res){
       if(res=='development'){
-        this.setState({base_url:'http://192.168.99.100'});
+        // this.setState({base_url:'http://192.168.99.100'});
+        this.setState({base_url:'http://0.0.0.0'});
       }else{
         this.setState({base_url:'http://localhost'});
       }
