@@ -14,9 +14,10 @@ const sid = process.env.SID;
 // const myFirebaseRef = new Firebase("https://trashpickup-97bc6.firebaseio.com/enrolled");
 // myFirebaseRef.push();
 const firebase = require('firebase');
+
 const myFirebaseRef = firebase.initializeApp({
-  serviceAccount: "./data/trashpickup-service.json",
-  databaseURL: "https://trashpickup-97bc6.firebaseio.com"
+  databaseURL: "https://codeforsanjose-1110.firebaseio.com",
+  serviceAccount: "data/trashpickup-service.json"
 });
 
 const db = firebase.database();
