@@ -17,8 +17,8 @@ Step 1: Clone this repo.
 Step 2: Install Docker.  Get an instance: `docker pull elasticsearch`
 This is from [here](https://github.com/dockerfile/elasticsearch)
 
-Step 3: In root of cloned repo, run `docker build -t pickup_portal -f . `
-
+~In root of cloned repo, run `docker build -t pickup_portal -f . `~
+Step 3: run 'docker build -t pickup_portal -f Dockerfile .'
 Step 4:  `docker run -d -p 9200:9200 -p 3000:3000 pickup_portal`
 
 Step 5: Check if elasticsearch is working at [indices](http://0.0.0.0:9200/_cat/indices?v)
