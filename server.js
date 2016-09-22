@@ -15,12 +15,12 @@ const sid = process.env.SID;
 // myFirebaseRef.push();
 const firebase = require('firebase');
 
-const myFirebaseRef = firebase.initializeApp({
-  databaseURL: "https://codeforsanjose-1110.firebaseio.com",
-  serviceAccount: "data/trashpickup-service.json"
-});
-
-const db = firebase.database();
+// const myFirebaseRef = firebase.initializeApp({
+//   databaseURL: "https://codeforsanjose-1110.firebaseio.com",
+//   serviceAccount: "data/trashpickup-service.json"
+// });
+//
+// const db = firebase.database();
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 9000 : process.env.PORT;
@@ -35,6 +35,26 @@ app.get('/getEnv',function(req,res){
       res.send("production");
   }
 });
+
+app.get('/checkFirebase',function(req,res){
+  if(db){
+      console.log("Connection ready...");
+      res.send("Connection ready...");
+  }else{
+      console.log("Connection failed...");
+      res.send("Connection failed...");
+  }
+});
+
+app.post('/submitUser',function(req,res){
+
+  console.log('submitUser');
+  console.log(req.query.phone);
+  res.send(req.query.phone);
+
+});
+
+
 
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {
