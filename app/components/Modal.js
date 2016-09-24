@@ -18,11 +18,11 @@ export default React.createClass({
     }
   },
   componentWillMount(){
-    // const firebaseRef = new Firebase(rootURL + 'items/');
     this.bindAsObject(new Firebase(rootURL + 'items/'), 'items');
   },
   handleClick (){
 
+    // const firebaseRef = new Firebase(rootURL + 'items/');
     const userData = {
       address : this.props.reminder.Address,
       pickupDay : this.props.reminder.PickupDay,
@@ -30,16 +30,16 @@ export default React.createClass({
       time : (document.getElementById('timeVal').value) ? document.getElementById('timeVal').value :'9:00 PM'
     }
 
-    // const keyRef = this.firebaseRefs.items.push(userData);
-    // console.log(keyRef.toString());
-    //
-    // if(keyRef.toString()){
-    //   this.setState(
-    //     {uploaded:true},
-    //     function(){
-    //       console.log(this.state);
-    //   });
-    // }
+    const keyRef = this.firebaseRefs.items.push(userData);
+    console.log(keyRef.toString());
+
+    if(keyRef.toString()){
+      this.setState(
+        {uploaded:true},
+        function(){
+          console.log(this.state);
+      });
+    }
 
 
   },
