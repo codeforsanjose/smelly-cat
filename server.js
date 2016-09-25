@@ -9,6 +9,9 @@ const config = require('./webpack.config.js');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+
+const router = require('./router');
+
 dotenv.load();
 //comment
 const sid = process.env.SID;
@@ -28,40 +31,16 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 9000 : process.env.PORT;
 const app = express();
 
+
+//App Setup
 app.use(morgan('combined'));  // for logging of the requests
 app.use(bodyParser.json({ type: '*/*' })); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.get('/getEnv',function(req,res){
-  if(isDeveloping){
-      console.log("In dev mode");
-      res.send("development");
-  }else{
-      console.log("In prod mode");
-      res.send("production");
-  }
-});
 
-app.get('/checkFirebase',function(req,res){
-  if(db){
-      console.log("Connection ready...");
-      res.send("Connection ready...");
-  }else{
-      console.log("Connection failed...");
-      res.send("Connection failed...");
-  }
-});
+router(app);
 
-app.post('/submitUser',function(req,res){
-
-  console.log(req.body);
-  res.send({"sucess":"true"});
-  // res.send(req.query.phone);
-
-});
-
-
-
+//Webpack Setup
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {
   publicPath: config.output.publicPath,
