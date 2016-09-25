@@ -7,6 +7,7 @@ const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 dotenv.load();
 
 const sid = process.env.SID;
@@ -25,6 +26,9 @@ const firebase = require('firebase');
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 9000 : process.env.PORT;
 const app = express();
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.get('/getEnv',function(req,res){
   if(isDeveloping){
@@ -48,9 +52,9 @@ app.get('/checkFirebase',function(req,res){
 
 app.post('/submitUser',function(req,res){
 
-  console.log('submitUser');
-  console.log(req.query.phone);
-  res.send(req.query.phone);
+  console.log(req.body);
+  res.send({"sucess":"true"});
+  // res.send(req.query.phone);
 
 });
 
