@@ -8,8 +8,9 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 dotenv.load();
-
+//comment
 const sid = process.env.SID;
 // const Firebase = require("firebase");
 // const myFirebaseRef = new Firebase("https://trashpickup-97bc6.firebaseio.com/enrolled");
@@ -27,7 +28,8 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 9000 : process.env.PORT;
 const app = express();
 
-app.use(bodyParser.json()); // for parsing application/json
+app.use(morgan('combined'));  // for logging of the requests
+app.use(bodyParser.json({ type: '*/*' })); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.get('/getEnv',function(req,res){
