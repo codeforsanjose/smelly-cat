@@ -1,5 +1,5 @@
-  [![Stories in Ready](https://badge.waffle.io/codeforsanjose/trash-pickup-portal.png?label=ready&title=Ready)](https://waffle.io/codeforsanjose/trash-pickup-portal)
-# Trash Pickup Portal
+[![Stories in Ready](https://badge.waffle.io/codeforsanjose/trash-pickup-portal.png?label=ready&title=Ready)](https://waffle.io/codeforsanjose/trash-pickup-portal)
+# Smelly Cat - Trash Pickup Portal
 
 Trash Pickup Portal provides a user-friendly way to search for information about trash pickup times for San Jose.
 
