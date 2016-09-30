@@ -18,14 +18,8 @@ const sid = process.env.SID;
 // const Firebase = require("firebase");
 // const myFirebaseRef = new Firebase("https://trashpickup-97bc6.firebaseio.com/enrolled");
 // myFirebaseRef.push();
-// const firebase = require('firebase');
-//
-// const myFirebaseRef = firebase.initializeApp({
-//   databaseURL: "https://codeforsanjose-1110.firebaseio.com",
-//   serviceAccount: "data/trashpickup-service.json"
-// });
 
-// const db = firebase.database();
+
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 9000 : process.env.PORT;
