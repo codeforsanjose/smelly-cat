@@ -24,12 +24,14 @@ module.exports = function(app){
   app.get('/checkFirebase',function(req,res){
     if(db){
         console.log("Connection ready...");
-
-        ref.once("value", function(snapshot) {
-            console.log(snapshot.val());
-            console.log('------------------');
-            res.send(snapshot.val());
-            });
+        ref.orderByChild('phone').equalTo('1234567').once('value', function(snap) {
+          res.send(snap.val());
+        });
+        // ref.once("value", function(snapshot) {
+        //     console.log(snapshot.val());
+        //     console.log('------------------');
+        //     res.send(snapshot.val());
+        //     });
 
         // res.send("Connection ready...");
 
@@ -41,9 +43,39 @@ module.exports = function(app){
 
   app.post('/submitUser',function(req,res){
 
-    console.log(req.body);
-    res.send({"sucess":"true"});
-    // res.send(req.query.phone);
+    const status = false;
+    console.log(req.body.phone);
+
+    ref.orderByChild('phone').equalTo(req.body.phone).once('value', function(snap) {
+
+      console.log('--------------------------');
+      if(snap.val()){
+          console.log('Found');
+          res.send({
+            "sucess" : "false",
+            "reason" : "Number already exists"
+          });
+      }else{
+        var refKey = ref.push(req.body);
+        console.log(refKey.toString());
+        if(refKey.toString()){
+          res.send({"sucess":refKey.toString()});
+        }else{
+          res.send({"sucess":"false"});
+        }
+      }
+      console.log('--------------------------');
+
+
+
+      status = true;
+    });
+    //
+    if(status){
+
+    }else{
+
+    }
 
   });
 
