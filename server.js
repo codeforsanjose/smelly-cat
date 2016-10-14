@@ -9,7 +9,6 @@ const config = require('./webpack.config.js');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-
 const router = require('./router');
 
 dotenv.load();

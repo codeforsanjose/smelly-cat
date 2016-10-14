@@ -24,16 +24,16 @@ module.exports = function(app){
   app.get('/checkFirebase',function(req,res){
     if(db){
         console.log("Connection ready...");
-        ref.orderByChild('phone').equalTo('1234567').once('value', function(snap) {
-          res.send(snap.val());
-        });
+        // ref.orderByChild('phone').equalTo('1234567').once('value', function(snap) {
+        //   res.send(snap.val());
+        // });
         // ref.once("value", function(snapshot) {
         //     console.log(snapshot.val());
         //     console.log('------------------');
         //     res.send(snapshot.val());
         //     });
 
-        // res.send("Connection ready...");
+       res.send("Connection ready...");
 
     }else{
         console.log("Connection failed...");
