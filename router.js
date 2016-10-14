@@ -1,4 +1,4 @@
-module.exports = function(app, isDeveloping){
+module.exports = function(app){
 
   const firebase = require('firebase');
 
@@ -11,28 +11,9 @@ module.exports = function(app, isDeveloping){
 
   const ref = db.ref("items");
 
-  app.get('/getEnv',function(req,res){
-    if(isDeveloping){
-        console.log("In dev mode");
-        res.send("development");
-    }else{
-        console.log("In prod mode");
-        res.send("production");
-    }
-  });
-
   app.get('/checkFirebase',function(req,res){
     if(db){
         console.log("Connection ready...");
-        // ref.orderByChild('phone').equalTo('1234567').once('value', function(snap) {
-        //   res.send(snap.val());
-        // });
-        // ref.once("value", function(snapshot) {
-        //     console.log(snapshot.val());
-        //     console.log('------------------');
-        //     res.send(snapshot.val());
-        //     });
-
        res.send("Connection ready...");
 
     }else{
@@ -65,10 +46,7 @@ module.exports = function(app, isDeveloping){
         }
       }
       console.log('--------------------------');
-
-
-
-      status = true;
+    status = true;
     });
     //
     if(status){
@@ -78,5 +56,57 @@ module.exports = function(app, isDeveloping){
     }
 
   });
+
+  //Twilio
+  // var twilioClient = require('./twilioClient');
+
+app.post('/sendSMS',function(req,res){
+
+  console.log(req.body.phone);
+  console.log(req.body.message);
+
+  var to = req.body.phone;
+  var message = req.body.message;
+
+  var config = require('./config');
+  var client = require('twilio')(config.accountSid, config.authToken);
+
+    client.messages.create({
+      body: message,
+      to: to,
+      from: config.sendingNumber
+  //  mediaUrl: imageUrl
+    }, function(err, data) {
+      if (err) {
+          res.send("Could not notify administrator")
+        console.error('Could not notify administrator');
+        console.error(err);
+      } else {
+          res.send("Notified");
+        console.log('Administrator notified');
+      }
+    });
+
+  // twilioClient.sendSms(admin.phoneNumber, messageToSend);
+  // res.send("Message Recieved")
+});
+
+  // function formatMessage(errorToReport) {
+  //   return '[This is a test] ALERT! It appears the server is' +
+  //     'having issues. Exception: ' + errorToReport +
+  //     '. Go to: http://newrelic.com ' +
+  //     'for more details.';
+  // };
+  //
+  exports.notifyOnError = function(appError, request, response, next) {
+    admins.forEach(function(admin) {
+      var messageToSend = formatMessage(appError.message);
+      twilioClient.sendSms(admin.phoneNumber, messageToSend);
+    });
+    next(appError);
+  };
+
+
+
 
 }
