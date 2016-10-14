@@ -5,3 +5,8 @@ node_modules/
 data
 .DS_Store
 npm-debug.log
+
+
+# Development/test local configuration
+.env
+.env.test
