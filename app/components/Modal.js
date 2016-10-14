@@ -1,25 +1,25 @@
 import React from 'react'
 import { render } from 'react-dom'
-import ReactFire from 'reactfire'
-import Firebase from 'firebase'
+// import ReactFire from 'reactfire'
+// import Firebase from 'firebase'
 import Listitem from './Listitem'
 
-const rootURL = 'https://codeforsanjose-1110.firebaseio.com/';
+// const rootURL = 'https://codeforsanjose-1110.firebaseio.com/';
 
 export default React.createClass({
-  mixins: [ReactFire],
-  getInitialState(){
-    return {
-      address : '',
-      pickupDay : '',
-      phone : '',
-      time : '9:00 PM',
-      uploaded : false
-    }
-  },
-  componentWillMount(){
-    this.bindAsObject(new Firebase(rootURL + 'items/'), 'items');
-  },
+  // mixins: [ReactFire],
+  // getInitialState(){
+  //   return {
+  //     address : '',
+  //     pickupDay : '',
+  //     phone : '',
+  //     time : '9:00 PM',
+  //     uploaded : false
+  //   }
+  // },
+  // componentWillMount(){
+  //   this.bindAsObject(new Firebase(rootURL + 'items/'), 'items');
+  // },
   handleClick (){
 
     // const firebaseRef = new Firebase(rootURL + 'items/');
