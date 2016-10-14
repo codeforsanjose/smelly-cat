@@ -30,8 +30,18 @@ app.use(morgan('combined'));  // for logging of the requests
 app.use(bodyParser.json({ type: '*/*' })); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+//Checking Environment
+app.get('/getEnv',function(req,res){
+  if(isDeveloping){
+      console.log("In dev mode");
+      res.send("development");
+  }else{
+      console.log("In prod mode");
+      res.send("production");
+  }
+});
 
-router(app, isDeveloping);
+router(app);
 
 //Webpack Setup
 const compiler = webpack(config);
