@@ -31,7 +31,11 @@ Step 7: Populate ElasticSearch with data.  Go to ~/Github/trash-pickup-portal/da
 
 Step 8: Run ```npm install``` to install dependencies
 
-Step 9: Run ```npm start``` to start the Server
+Step 9: Open .env.example at the root of the project and update it with values from your Twilio account and local configuration. Save the file as .env. You'll need to set TWILIO_AUTH_TOKEN, TWILIO_ACCOUNT_SID, and TWILIO_NUMBER.
+
+Step 10: Generate a JSON file containing your service account's credentials for the Firebase connection ( [Add Firebase to your app](https://firebase.google.com/docs/server/setup) ). Rename the file as trashpickup-service.json and place it under ./data/env in the root of the project.
+
+Step 11: Run ```npm start``` to start the Server
 
 
 ### Run Bash on your docker instance:
