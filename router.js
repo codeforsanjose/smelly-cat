@@ -22,10 +22,39 @@ module.exports = function(app){
     }
   });
 
-  app.post('/submitUser',function(req,res){
 
+/*
+submitUser
+{
+  "phone"   : "XXX-XXX-XXX",
+  "time"    : "24:00",
+  "day"     : "Monday",
+  "address" : "1 Washington St, San Jose, CA",
+}
+
+Firesbase Record
+
+{
+  "phone"   : "XXX-XXX-XXX",
+  "time"    : "24:00",
+  "day"     : "Monday",
+  "address" : "1 Washington St, San Jose, CA",
+  "confirmed" : true,
+  "validate"  : "992999", //A random number for validation.
+  "validation_sent" : "21:00", //Time when the validation code was sent.
+  "validation_ack"  : "21:01"  //Time when the validation code was acknowledge.
+}
+
+
+
+*/
+  app.post('/submitUser',function(req,res){
+    const min = 1000000;
+    const max = 9999999;
     const status = false;
-    console.log(req.body.phone);
+    const userObj = req.body;
+    userObj["validate"] = Math.floor(Math.random() * (max - min)) + min;
+    console.log(userObj);
 
     ref.orderByChild('phone').equalTo(req.body.phone).once('value', function(snap) {
 
@@ -37,7 +66,8 @@ module.exports = function(app){
             "reason" : "Number already exists"
           });
       }else{
-        var refKey = ref.push(req.body);
+        // var refKey = ref.push(req.body);
+        var refKey = ref.push(userObj);
         console.log(refKey.toString());
         if(refKey.toString()){
           res.send({"sucess":refKey.toString()});
@@ -57,6 +87,36 @@ module.exports = function(app){
 
   });
 
+app.post('/validateUser',function(req,res){
+
+  if(req.body.validate){
+    ref.orderByChild('phone').equalTo(req.body.phone).once('value', function(snap) {
+      if(snap.val()){
+        const userObj =  snap.val();
+        const serverCode = userObj[Object.keys(userObj)[0]].validate;
+        if(serverCode === Number(req.body.validate)){
+          res.send({
+            "status" : "Validated"
+          })
+        }else{
+          res.send({
+            "status" : "Invalid code entered"
+          })
+        }
+          // console.log();
+      }else{
+        res.send({
+          "status" : "Number not found"
+        });
+      }
+    });
+  }else{
+    res.send({
+      "status" : "No validation code"
+    });
+  }
+
+});
   //Twilio
   // var twilioClient = require('./twilioClient');
 
