@@ -1,5 +1,6 @@
 module.exports = function(app){
 
+  var twilioClient = require('./twilioClient');
   const firebase = require('firebase');
 
   const myFirebaseRef = firebase.initializeApp({
@@ -53,7 +54,9 @@ Firesbase Record
     const max = 9999999;
     const status = false;
     const userObj = req.body;
-    userObj["validate"] = Math.floor(Math.random() * (max - min)) + min;
+    const validate = Math.floor(Math.random() * (max - min)) + min;
+    const to = req.body.phone;
+    userObj["validate"] = validate;
     console.log(userObj);
 
     ref.orderByChild('phone').equalTo(req.body.phone).once('value', function(snap) {
@@ -70,6 +73,7 @@ Firesbase Record
         var refKey = ref.push(userObj);
         console.log(refKey.toString());
         if(refKey.toString()){
+          twilioClient.sendSms(to, validate);
           res.send({"sucess":refKey.toString()});
         }else{
           res.send({"sucess":"false"});
@@ -117,8 +121,6 @@ app.post('/validateUser',function(req,res){
   }
 
 });
-  //Twilio
-  // var twilioClient = require('./twilioClient');
 
 app.post('/sendSMS',function(req,res){
 
@@ -128,6 +130,9 @@ app.post('/sendSMS',function(req,res){
   var to = req.body.phone;
   var message = req.body.message;
 
+  //twilioClient.sendSms(to, message);
+
+  //Use the below code to build the API with status update.
   var config = require('./config');
   var client = require('twilio')(config.accountSid, config.authToken);
 
@@ -146,27 +151,6 @@ app.post('/sendSMS',function(req,res){
         console.log('Administrator notified');
       }
     });
-
-  // twilioClient.sendSms(admin.phoneNumber, messageToSend);
-  // res.send("Message Recieved")
 });
-
-  // function formatMessage(errorToReport) {
-  //   return '[This is a test] ALERT! It appears the server is' +
-  //     'having issues. Exception: ' + errorToReport +
-  //     '. Go to: http://newrelic.com ' +
-  //     'for more details.';
-  // };
-  //
-  exports.notifyOnError = function(appError, request, response, next) {
-    admins.forEach(function(admin) {
-      var messageToSend = formatMessage(appError.message);
-      twilioClient.sendSms(admin.phoneNumber, messageToSend);
-    });
-    next(appError);
-  };
-
-
-
 
 }
